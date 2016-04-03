@@ -1,3 +1,5 @@
+// XSTEM codeFun, js-arduino
+
 // *****************************************************************
 // Variables
 // *****************************************************************
@@ -25,26 +27,26 @@ myBoard.on("exit", function() {
 myBoard.on("ready", function() {
 
   // 13 is the pin #
-  myLed = new five.Led(9);
-
-  myLed.on();
-
-  // Code your led to blink
-  /*
-  myBoard.loop(500, function(){
-    
-    // Make your led blink.
-    // Following code will be executed every 500ms
-
-  });
-  */
+  myLed = new five.Led(13);
 
   myBoard.repl.inject({
     led: myLed
   });
+
+  myLed.on();
+
+  
+  /*
+  myBoard.loop(500, function(){
+    
+    // Put your code here, it will be executed repeatedly every 500ms
+
+  });
+  */
+
   
   console.log("You can interact with the LED via the variable 'led';\n");
-  console.log(" led.on(); \n led.off(); \n led.toggle(); \n");
+  console.log(" led.on(); // turn on the led\n led.off(); // turn off the led\n led.toggle(); // toggle the led \n");
   console.log("Hit control-C to exit.\n >> ");
   
 });
@@ -52,7 +54,6 @@ myBoard.on("ready", function() {
 
 /*
 Questions:
-  - Make sure myLed is off, after you exit your program?
   - Code your led to blink.
-
+  - Make sure myLed is off, after you exit your program?
 */
