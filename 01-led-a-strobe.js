@@ -1,15 +1,22 @@
 // *****************************************************************
-// requires, so johnny-five is imported
-// *****************************************************************
-var five = require("johnny-five");
-
-// *****************************************************************
 // Variables
 // *****************************************************************
+var five = require("johnny-five");
 var myBoard, myLed;
 
 // Connects to your borad
 myBoard = new five.Board();
+
+// *****************************************************************
+// Do clean up here:
+//  - e.g., turn off all leds, stop all animation
+//  - this == myBoard
+// *****************************************************************
+myBoard.on("exit", function() {
+
+  console.log("Bye~~~ See u again...");
+
+});
 
 // *****************************************************************
 // Your fun starts here:
@@ -20,19 +27,32 @@ myBoard.on("ready", function() {
   // 13 is the pin #
   myLed = new five.Led(9);
 
-  myLed.strobe( 1000 );
+  myLed.on();
 
-  // make myLED available as "led" in REPL
-  // try "on", "off", "toggle", "strobe", "stop" (stops strobing)
+  // Code your led to blink
+  /*
+  myBoard.loop(500, function(){
+    
+    // Make your led blink.
+    // Following code will be executed every 500ms
 
-  this.repl.inject({
+  });
+  */
+
+  myBoard.repl.inject({
     led: myLed
   });
   
-  console.log("You can interact with the RGB LED via the variable 'led' e.g. led.on();\n");
-  console.log("led.on(); / led.off(); / led.toggle();");
-  console.log("led.strobe(<#ms>); / led.blink(<#ms>); / led.stop();");
-  console.log("led.brightness(<0-255>);");
+  console.log("You can interact with the LED via the variable 'led';\n");
+  console.log(" led.on(); \n led.off(); \n led.toggle(); \n");
   console.log("Hit control-C to exit.\n >> ");
   
 });
+
+
+/*
+Questions:
+  - Make sure myLed is off, after you exit your program?
+  - Code your led to blink.
+
+*/
