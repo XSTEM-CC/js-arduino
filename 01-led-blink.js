@@ -33,8 +33,6 @@ myBoard.on("ready", function() {
     led: myLed
   });
 
-  myLed.on();
-
   
   /*
   myBoard.loop(500, function(){
