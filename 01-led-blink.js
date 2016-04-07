@@ -3,18 +3,17 @@
 // *****************************************************************
 // Variables
 // *****************************************************************
-var five = require("johnny-five");
-var robot, myLed;
+var j5 = require("johnny-five");
+var bot, myLed;
 
 // Connects to your robot brain
-robot = new five.Board();
+bot = new j5.Board();
 
 // *****************************************************************
 // Do clean up here:
 //  - e.g., turn off all leds, stop all animation
-//  - this == robot
 // *****************************************************************
-robot.on("exit", function() {
+bot.on("exit", function() {
 
   console.log("Bye~~~ See u again...");
 
@@ -24,18 +23,18 @@ robot.on("exit", function() {
 // Your fun starts here:
 //  - When board is "ready", function() { ... } will be executed
 // *****************************************************************
-robot.on("ready", function() {
+bot.on("ready", function() {
 
   // 13 is the pin #
-  myLed = new five.Led(13);
+  myLed = new j5.Led(13);
 
-  robot.repl.inject({
+  bot.repl.inject({
     led: myLed
   });
 
   
   /*
-  robot.loop(500, function(){
+  bot.loop(500, function(){
     
     // Put your code here, it will be executed repeatedly every 500ms
 
