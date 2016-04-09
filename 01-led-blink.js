@@ -25,8 +25,8 @@ bot.on("exit", function() {
 // *****************************************************************
 bot.on("ready", function() {
 
-  // 9 is the pin #
-  myLed = new j5.Led(9);
+  // 13 is the pin #
+  myLed = new j5.Led(13);
 
   bot.repl.inject({
     led: myLed
