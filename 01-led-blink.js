@@ -15,6 +15,7 @@ bot = new j5.Board();
 // *****************************************************************
 bot.on("exit", function() {
 
+  myLed.off();
   console.log("Bye~~~ See u again...");
 
 });
@@ -25,22 +26,19 @@ bot.on("exit", function() {
 // *****************************************************************
 bot.on("ready", function() {
 
-  // 13 is the pin #
-  myLed = new j5.Led(13);
+  // 9 is the pin #
+  myLed = new j5.Led(9);
 
   bot.repl.inject({
     led: myLed
   });
-
   
-  /*
+  // Be executed repeatedly every 500ms
   bot.loop(500, function(){
     
-    // Put your code here, it will be executed repeatedly every 500ms
+    myLed.toggle();
 
   });
-  */
-
   
   console.log("You can interact with the LED via the variable 'led';\n");
   console.log(" led.on(); // turn on the led\n led.off(); // turn off the led\n led.toggle(); // toggle the led \n");
