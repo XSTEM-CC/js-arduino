@@ -39,9 +39,9 @@ bot.on("ready", function() {
   this.loop(10, function() {
 
     // Write 3 piece of code, functioning as:
-    // 1. Slowly lighten the led, use myLed.brightness(<0 ~ 255>);
-    // 2. Slowly dim the led, use myLed.brightness(<255 ~ 0>);
-    // 3. Connects 2 & 3, so the led breathing
+    // 1. Slowly lightening the led, use myLed.brightness(<0 ~ 255>);
+    // 2. Slowly diming the led, use myLed.brightness(<255 ~ 0>);
+    // 3. Connects 2 & 3, so the led looks like breathing
 
 
   });
