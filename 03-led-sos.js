@@ -19,16 +19,6 @@ bot = new j5.Board({
 });
 
 // *****************************************************************
-// Do clean up here:
-//  - e.g., turn off all leds, stop all animation
-// *****************************************************************
-bot.on("exit", function() {
-
-  console.log("Bye~~~ See u again...");
-
-});
-
-// *****************************************************************
 // Your fun starts here:
 //  - When board is "ready", function() { ... } will be executed
 // *****************************************************************
@@ -36,8 +26,7 @@ bot.on("ready", function() {
 
   console.log("Hit control-C to exit.\n >> ");
 
-
-  // 13 is the pin #
+  // 9 is the pin #
   myLed = new j5.Led(9);
 
   myLed.off();
@@ -61,52 +50,17 @@ bot.on("ready", function() {
     //    +off (100ms)
     //    "S", on (100ms), off (100ms), on, off, on, off
 
-    if (count == 1
-      || count == 3
-      || count == 5
-
-      || count == 8
-      || count == 9
-      || count == 10
-
-      || count == 12
-      || count == 13
-      || count == 14
-
-      || count == 16
-      || count == 17
-      || count == 18
-
-      || count == 21
-      || count == 23
-      || count == 25){
-      myLed.on();
-      console.log("on");
-    }
-    else {
-      myLed.off();
-      console.log("off");
-    }
-
-    count = count + 1;
-
-    if (count >= 27 && count < 30) {
-      myLed.off();
-      return;
-    }
-    else if (count == 30){
-      count = 1;
-    }
-
-
   });
-
 
 });
 
+// *****************************************************************
+// Do clean up here:
+//  - e.g., turn off all leds, stop all animation
+// *****************************************************************
+bot.on("exit", function() {
 
-/*
-Questions:
-  - Code your led to blink.
-  - Make sure myLed is off, after you exit your program?
-*/
+  myLed.off();
+  console.log("Bye~~~ See u again...");
+
+});
