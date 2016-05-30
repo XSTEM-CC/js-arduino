@@ -10,27 +10,27 @@
 // *****************************************************************
 // requires
 // *****************************************************************
-var j5 = require("johnny-five");
+var five = require("johnny-five");
+// Connects to your borad
+var myBoard = new five.Board();
 
 // *****************************************************************
 // Variables
 // *****************************************************************
-var bot, myLed;
+var myLed;
+var brightness = 0;
+var isFadeIn = true;
 
-
-
-// Connects to your borad
-bot = new j5.Board();
 
 // *****************************************************************
 // Your fun starts here:
 //  - When board is "ready", function() { ... } will be executed
 // *****************************************************************
-bot.on("ready", function() {
+myBoard.on("ready", function() {
 
   // Make sure a PWM pin is used
   // Try 3, 5, 6, 9, 10, 11
-  myLed = new j5.Led(9);
+  myLed = new five.Led(9);
 
   this.repl.inject({
     led: myLed
@@ -38,34 +38,36 @@ bot.on("ready", function() {
 
   console.log("You can interact with the RGB LED via the variable 'led' e.g. led.on();\n Hit control-C to exit.\n >> ");
 
-  // ========================
-  var brightness = 255;
-
-  this.loop(10, function() {
+  this.loop(5, function() {
 
     // Write 3 piece of code, functioning as:
-    // 1. Slowly lightening the led, use myLed.brightness(<0 ~ 255>);
-    // 2. Slowly diming the led, use myLed.brightness(<255 ~ 0>);
-    // 3. Connects 2 & 3, so the led looks like breathing
-
-    // myLed.brightness(brightness);
-    // brightness = brightness + 1;
-
-    // if (brightness == 255) {
-    //   brightness = 0;
-    // }
+    // 1. Slowly lighten the led, use myLed.brightness(<0 ~ 255>);
+    // 2. Slowly dim the led, use myLed.brightness(<255 ~ 0>);
+    // 3. Connects 2 & 3, so the led breathing
 
     myLed.brightness(brightness);
-    brightness = brightness - 1;
+    console.log("brightness:" + brightness);
 
-    if (brightness == 0) {
-      brightness = 255;
+
+    if (brightness == 255) {
+      isFadeIn = false;
     }
 
+    if (brightness == 0) {
+      isFadeIn = true;
+    }
+
+    if (isFadeIn) {
+      
+      brightness++;
+
+    } else {
+      
+      brightness--;
+
+    }
 
   });
-
-  // ========================
 
 
 });
@@ -74,7 +76,7 @@ bot.on("ready", function() {
 // Do clean up here:
 //  - turn off all leds, stop all animation
 // *****************************************************************
-bot.on("exit", function() {
+myBoard.on("exit", function() {
 
   myLed.stop();
   myLed.off();

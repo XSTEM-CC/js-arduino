@@ -36,6 +36,7 @@ bot.on("ready", function() {
   // 9 is the pin #
   myLed = new j5.Led(9);
 
+  // Enables console led.* commands
   bot.repl.inject({
     led: myLed
   });
