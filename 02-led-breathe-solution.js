@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // XSTEM codeFun, js-arduino
 // 
 // ██████╗ ██████╗ ███████╗ █████╗ ████████╗██╗  ██╗██╗███╗   ██╗ ██████╗     ██╗     ███████╗██████╗ 
@@ -18,8 +20,6 @@ var myBoard = new five.Board();
 // Variables
 // *****************************************************************
 var myLed;
-var brightness = 0;
-var isFadeIn = true;
 
 
 // *****************************************************************
@@ -48,6 +48,8 @@ myBoard.on("ready", function() {
     myLed.brightness(brightness);
     console.log("brightness:" + brightness);
 
+    var brightness = 0;
+    var isFadeIn = true;
 
     if (brightness == 255) {
       isFadeIn = false;

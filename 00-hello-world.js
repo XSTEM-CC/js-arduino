@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // XSTEM codeFun, js-arduino
 
 var j5 = require("johnny-five");
